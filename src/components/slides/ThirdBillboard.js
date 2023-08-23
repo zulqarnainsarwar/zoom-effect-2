@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Modal from "../common/Modal";
+import CustomLinkButton from "../common/CustomLinkButton";
 const ThirdBillboard = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [isArrowHovered, setIsArrowHovered] = useState(false);
@@ -13,57 +15,12 @@ const ThirdBillboard = () => {
   };
   return (
     <div className="min-h-[1043px] min-w-[1920px] bg-cover bg-hero_three  bg-no-repeat bg-center text-center relative flex items-center justify-center">
-      {showModal && (
-        <div className="w-[600px] h-[400px] bg-white relative rounded-xl ">
-          <div className="">
-            <button
-              class="absolute top-2 right-3 text-xl bg-transparent cursor-pointer text-black "
-              onClick={handleCloseModal}
-            >
-              &times;
-            </button>
-
-            <h2 className="text-center text-4xl font-semibold	font-sans pt-4 bg-gradient-to-r from-teal-300 to-purple-500 text-transparent bg-clip-text ">
-              Book an Appointment
-            </h2>
-            <form class="px-8 pt-8">
-              <div className="mb-6">
-                <input
-                  className="shadow appearance-none border rounded w-[90%] py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="username"
-                  type="text"
-                  placeholder="Enter Your Name"
-                />
-              </div>
-              <div className="mb-6">
-                <input
-                  class="shadow appearance-none border rounded w-[90%] py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="email"
-                  type="text"
-                  placeholder="Enter Your Email"
-                />
-              </div>
-              <div class="mb-6">
-                <input
-                  className="shadow appearance-none border rounded w-[90%] pb-16 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="text"
-                  type="text"
-                  placeholder="Enter Your Text Here"
-                />
-              </div>
-              <div className="flex items-center justify-between ml-8">
-                <button
-                  class="bg-blue-500 hover:bg-blue-700   text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                  type="button"
-                >
-                  Submit
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
-
+      <Modal
+        handleCloseModal={() => {
+          setModelShow(false);
+        }}
+        showModal={showModal}
+      />
       <a
         className="block z-20 w-[11px] h-[11px]"
         onClick={() => setModelShow(true)}
@@ -83,57 +40,12 @@ const ThirdBillboard = () => {
         </span>
       </a>
       {/*** Show 2nd pulse circle */}
-      {showSecondModal && (
-        <div className="w-[600px] h-[400px] bg-white relative rounded-xl ">
-          <div className="">
-            <button
-              class="absolute top-2 right-3 text-xl bg-transparent cursor-pointer text-black "
-              onClick={handleCloseModal}
-            >
-              &times;
-            </button>
-
-            <h2 className="text-center text-4xl font-semibold	font-sans pt-4 bg-gradient-to-r from-teal-300 to-purple-500 text-transparent bg-clip-text ">
-              Book an Appointment
-            </h2>
-            <form class="px-8 pt-8">
-              <div className="mb-6">
-                <input
-                  className="shadow appearance-none border rounded w-[90%] py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="username"
-                  type="text"
-                  placeholder="Enter Your Name"
-                />
-              </div>
-              <div className="mb-6">
-                <input
-                  class="shadow appearance-none border rounded w-[90%] py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="email"
-                  type="text"
-                  placeholder="Enter Your Email"
-                />
-              </div>
-              <div class="mb-6">
-                <input
-                  className="shadow appearance-none border rounded w-[90%] pb-16 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="text"
-                  type="text"
-                  placeholder="Enter Your Text Here"
-                />
-              </div>
-              <div className="flex items-center justify-between ml-8">
-                <button
-                  class="bg-blue-500 hover:bg-blue-700   text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                  type="button"
-                >
-                  Submit
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
-
+      <Modal
+        handleCloseModal={() => {
+          setModelSecondShow(false);
+        }}
+        showModal={showSecondModal}
+      />
       <a
         className="block z-20 w-[11px] h-[11px]"
         onClick={() => setModelSecondShow(true)}
@@ -154,134 +66,21 @@ const ThirdBillboard = () => {
       </a>
 
       {/****End 2nd circle */}
-      <span
-        className="border border-white h-6 w-6 transition-all duration-500   text-white flex items-center justify-between ease-in-out font-bold "
-        style={{
-          borderRadius: "12.5px",
-          boxShadow: "rgba(0, 0, 0, 0.2) 0px 0px 10px 0px",
-          textShadow: "rgba(0, 0, 0, 0.3) 0px 0px 10px",
-          width: "24px",
-          position: "absolute",
-          right: "0px",
-          top: "78%",
-          left: "20%",
-          cursor: isArrowHovered ? "pointer" : "default",
-        }}
-        onMouseEnter={() => setIsArrowHovered(true)}
-        onMouseLeave={() => setIsArrowHovered(false)}
-      >
-        <span
-          className="block absolute"
-          style={{ top: "6px", left: "auto", right: "5px" }}
-        >
-          <svg
-            width="13"
-            height="11"
-            viewBox="0 0 13 11"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            stroke="currentColor"
-            className={`rotate-180	 ${isArrowHovered ? "cursor-pointer" : ""}`}
-          >
-            <line
-              x1="11.7052"
-              y1="4.77742"
-              x2="6.8748"
-              y2="9.60777"
-              strokeWidth="2"
-            ></line>
-            <path d="M10.2912 4.77745L6.89487 1.38135" strokeWidth="2"></path>
-            <line
-              x1="10.5151"
-              y1="5.45581"
-              x2="0.998047"
-              y2="5.45581"
-              strokeWidth="2"
-            ></line>
-          </svg>
-        </span>
-        <span
-          className={`block  transition-opacity duration-500 ease-in-out antialiased     ${
-            isArrowHovered ? "opacity-100" : "opacity-0"
-          }`}
-          style={{
-            whiteSpace: "nowrap",
-            position: "absolute",
-            top: "0px",
-            lineHeight: "1",
-            padding: "3px 22px 3px 15px",
-            right: "0px",
-            left: "auto",
-          }}
-        >
-          Next Billboard
-        </span>
-      </span>
-      <span
-        className="border border-white h-6 w-6 transition-all duration-500   text-white flex items-center justify-between ease-in-out font-bold "
-        style={{
-          borderRadius: "12.5px",
-          boxShadow: "rgba(0, 0, 0, 0.2) 0px 0px 10px 0px",
-          textShadow: "rgba(0, 0, 0, 0.3) 0px 0px 10px",
-          width: "24px",
-          position: "absolute",
-          right: "0px",
-          top: "80%",
-          right: "5%",
-          cursor: isSlideHovered ? "pointer" : "default",
-        }}
-        onMouseEnter={() => setISlideHovered(true)}
-        onMouseLeave={() => setISlideHovered(false)}
-      >
-        <span
-          className="block absolute"
-          style={{ top: "6px", left: "auto", right: "5px" }}
-        >
-          <svg
-            width="13"
-            height="11"
-            viewBox="0 0 13 11"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            stroke="currentColor"
-            className={`rotate-0	 ${isSlideHovered ? "cursor-pointer" : ""}`}
-          >
-            <line
-              x1="11.7052"
-              y1="4.77742"
-              x2="6.8748"
-              y2="9.60777"
-              strokeWidth="2"
-            ></line>
-            <path d="M10.2912 4.77745L6.89487 1.38135" strokeWidth="2"></path>
-            <line
-              x1="10.5151"
-              y1="5.45581"
-              x2="0.998047"
-              y2="5.45581"
-              strokeWidth="2"
-            ></line>
-          </svg>
-        </span>
-        <Link to="/slide">
-          <span
-            className={`block  transition-opacity duration-500 ease-in-out antialiased     ${
-              isSlideHovered ? "opacity-100" : "opacity-0"
-            }`}
-            style={{
-              whiteSpace: "nowrap",
-              position: "absolute",
-              top: "0px",
-              lineHeight: "1",
-              padding: "3px 22px 3px 15px",
-              right: "0px",
-              left: "auto",
-            }}
-          >
-            Previous Slide
-          </span>
-        </Link>
-      </span>
+      <CustomLinkButton
+        top={78}
+        left={20}
+        text={"Next Billboard"}
+        rotate={180}
+        link={"/"}
+      />
+      {/***Previous slide button */}
+      <CustomLinkButton
+        top={80}
+        right={5}
+        text={"  Previous Slide"}
+        rotate={0}
+        link={"/slide"}
+      />
     </div>
   );
 };
